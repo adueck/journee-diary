@@ -1,6 +1,6 @@
 # journee (beta)
 
-A lightweight, simplified RedNotebook-type journal/diary app. Built with Electron. Makes text files.
+A lightweight, simplified RedNotebook-type journal/diary app. Built with Electron. Makes a folder full of dated text files.
 
 ### Installing and Running
 

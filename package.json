@@ -7,12 +7,12 @@
       "type": "git",
       "url": "git+https://github.com/adueck/journee"
   },
-  "keywords": {
+  "keywords": [
       "journal",
       "diary",
       "notebook",
       "note"
-  },
+  ],
   "author": "Adam Dueck",
   "licence": "Apache 2.0",
   "main": "main.js",

@@ -11,7 +11,6 @@ A lightweight, simplified RedNotebook-type journal/diary app. Built with Electro
 Make sure you have electron installed globally
 ```
 npm install -g electron
-
 ```
 
 then install dependencies and run
@@ -32,4 +31,6 @@ electron .
 
 #### Contributions are welcome!
 
-Apache 2.0 Licence
+Made by Adam Dueck - Apache 2.0 Licence
+
+Built using [Bootstrap](https://getbootstrap.com), [Zabuto Calendar](https://github.com/zabuto/calendar), [NodeJS](https://nodejs.org), and [Electron](electron.atom.io).

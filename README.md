@@ -4,7 +4,7 @@
 
 A lightweight, simplified RedNotebook-type journal/diary app. Built with Electron.
 
-### Don't chain your memories to some obscure piece of journal software.
+### Finally, a journal app that creates a timeless, readable folder of memories
 
 Other diary software keeps your diary in some unique, unreadable format. People are stuck with their particular journal system, or have to struggle with tricky imports/exports.
 

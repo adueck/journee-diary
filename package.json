@@ -5,9 +5,9 @@
   "version": "0.1.0",
   "repository": {
       "type": "git",
-      "url": "git+https://github.com/adueck/journee.git"
+      "url": "git+https://github.com/adueck/journee"
   },
-  "keywords,": {
+  "keywords": {
       "journal",
       "diary",
       "notebook",

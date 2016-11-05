@@ -1,0 +1,20 @@
+
+{
+  "name": "Journee",
+  "productName": "Journee",
+  "version": "0.1.0",
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/adueck/journee.git"
+  },
+  "keywords,": {
+      "journal",
+      "diary",
+      "notebook",
+      "note"
+  },
+  "author": "Adam Dueck",
+  "licence": "Apache 2.0",
+  "main": "main.js",
+  "dependencies": "glob"
+}

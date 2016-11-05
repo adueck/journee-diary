@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.min.css">
+
+    </head>
+    <body>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <!-- todo: figure out best use of columns  md   lg etc -->
+      <!-- todo: center a 4 / 7 combo ?? -->
+     <div class="row">
+      <div class="col-md-4">
+          <div id="my-calendar" style="margin-top: 20px; margin-bottom: 30px;"></div>
+      </div>
+        <div class="col-md-7 full-height">
+          <textarea class="form-control" id="textArea" autofocus></textarea>
+          <p>
+            <span class="glyphicon glyphicon-cog bottom-icon" aria-hidden="true" onclick="$('#settingsModal').modal('show');"></span>
+            <span id="below-text" style="text-align: right; float: right; font-style: italic; color: grey;"></span>
+          </p>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+<!-- modals/popups -->
+
+<!-- TODO: what's the point of 'tabindex' -->
+
+<div class="modal fade" id="introModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" >
+ <div class="modal-dialog" role="document">
+  <div class="modal-content">
+   <div class="modal-header">
+    <h4 class="modal-title">Welcome to Journee!</h4>
+     </div>
+      <div class="modal-body">
+        <p>To get started, choose a directory that you'd like to keep your journal.</p>
+        <p>Your journal will actually be a folder full of files, named <code>YYYY-MM-DD.txt</code> for each day you write. That way you'll have a folder full of memories that can easily be accessed or read, even if you delete or stop using this program.</p>
+        <p>It's best if you make a new/empty folder, and keep it in a place you won't forget about it.</p>
+        <p><em>TIP: Make a <code>journal</code> folder in your Dropbox and keep your files there for easy backup.</em></p>
+        <!-- warning for non-empty directory -->
+        <div id="nonEmptyAlertSpaceStart"></div>
+      </div>
+     <div class="modal-footer">
+    <button type="button" class="btn btn-primary" onclick="initialChooseDirectory()">Choose Journal Directory</button>
+   </div>
+  </div><!-- /.modal-content -->
+ </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog">
+ <div class="modal-dialog" role="document">
+  <div class="modal-content">
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">Settings</h4>
+     </div>
+      <div class="modal-body">
+        <p>Directory to store journal entries:</p>
+        <ul class="list-group">
+          <li class="list-group-item" id="journal-directory"></li>
+        </ul>
+        <!-- alert for non-empty directory -->
+        <div id="nonEmptyAlertSpace"></div>
+        <p><button type="button" class="btn btn-default" onclick="chooseDirectory()">Change Journal Directory</button></p>
+        <p>Font Size</p>
+        <div class="btn-group" data-toggle="buttons">
+        <!-- todo: actually have this change the font -->
+        <!-- todo: have it start indented on the active fant size -->
+        <!-- todo: that will probably mean ADDING the property 'checked' to the tag at the same point thot the directory is filled -->
+          <label class="btn btn-default active" id="option12Label" onclick="setFont(12)">
+            <input type="radio" name="options" autocomplete="off"> 12
+          </label>
+          <label class="btn btn-default" id="option14Label" onclick="setFont(14)">
+            <input type="radio" name="options" autocomplete="off"> 14
+          </label>
+          <label class="btn btn-default" id="option16Label" onclick="setFont(16)">
+            <input type="radio" name="options" autocomplete="off"> 16
+          </label>
+          <label class="btn btn-default" id="option18Label" onclick="setFont(18)">
+            <input type="radio" name="options" autocomplete="off"> 18
+          </label>
+          <label class="btn btn-default" id="option20Label" onclick="setFont(20)">
+            <input type="radio" name="options" autocomplete="off"> 20
+          </label>
+        </div>
+      </div>
+      <!--todo put another column beside the font size selection that lets windows users select either Windows or UTF-8 encoding -->
+     <div class="modal-footer">
+       <span style="font-style: italic; float: left;">Version 0.1.0 - <a href="https://github.com/adueck/">check for update</a></span>
+       <!-- todo: make this open in browser -->
+       <button type="button" class="btn btn-primary" data-dismiss="modal">Exit</button>
+   </div>
+  </div><!-- /.modal-content -->
+ </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+        <script>
+          window.$ = window.jQuery = require('./js/vendor/jquery-1.11.2.min.js');
+        </script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/file-interface.js"></script>
+        <script src="js/key-shortcuts.js"></script>
+        <script src="js/zabuto_calendar.min.js"></script>
+        <script src="js/main.js"></script>
+
+    </body>
+</html>

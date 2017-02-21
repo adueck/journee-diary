@@ -14,6 +14,16 @@ npm install -g electron
 
 ```
 
+Clone the repository
+```
+git clone https://github.com/adueck/journee-diary
+```
+
+Move into the app directory
+```
+cd journee-diary/app
+```
+
 then install dependencies and run
 
 ```

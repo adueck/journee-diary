@@ -36,9 +36,7 @@ electron .
 #### Things still coming:
 
 - Search function
-- Keyboard Shortcuts and explanations
-- Logos/icons finished and proper packaging 
-- Polished up UI
+- Audio notes
 
 #### Contributions are welcome!
 

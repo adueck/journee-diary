@@ -1,0 +1,55 @@
+/* Suggestions from https://blog.avocode.com/blog/4-must-know-tips-for-building-cross-platform-electron-apps */
+
+.my-ui-text {
+      -webkit-user-select:none;
+  }
+
+/* body {
+    font: caption;
+  }
+*/
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.bottom-icon {
+  color: grey;
+  margin-left: 2px;
+}
+
+.bottom-icon:hover {
+  cursor: pointer;
+}
+
+#below-text {
+  text-align: right;
+  float: right;
+  font-style: italic;
+  color: grey;
+}
+
+html,body {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+}
+
+.row {
+  height: 100%;
+}
+
+
+.col-md-7.full-height {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+textarea.form-control {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  flex: 1 1 auto;
+}

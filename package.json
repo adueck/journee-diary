@@ -1,20 +1,39 @@
-
 {
   "name": "Journee",
   "productName": "Journee",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "repository": {
-      "type": "git",
-      "url": "git+https://github.com/adueck/journee"
+    "type": "git",
+    "url": "git+https://github.com/adueck/journee"
   },
   "keywords": [
-      "journal",
-      "diary",
-      "notebook",
-      "note"
+    "journal",
+    "diary",
+    "notebook",
+    "note"
   ],
   "author": "Adam Dueck",
   "license": "Apache-2.0",
   "main": "main.js",
-  "dependencies": "glob"
+  "dependencies": {
+    "electron-json-storage": "^3.0.1",
+    "electron-window-state": "^4.0.2",
+    "glob": "^7.1.1"
+  },
+  "devDependencies": {
+    "electron": "^1.4.15",
+    "electron-builder": "^13.11.1"
+  },
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "electron ./app --enable-logging",
+    "dev": "NODE_ENV='development' npm run start",
+    "dist": "build --win"
+  },
+  "build": {
+    "synopsis": "A daily journal app",
+    "asar": false,
+    "forceCodeSigning": true,
+    "taget": "deb"
+  }
 }

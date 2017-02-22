@@ -1,6 +1,7 @@
 {
   "name": "Journee",
-  "productName": "Journee",  
+  "productName": "Journee",
+  "description": "A Daily Journal App",
   "version": "1.0.1",
   "repository": {
     "type": "git",

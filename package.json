@@ -1,6 +1,6 @@
 {
   "name": "Journee",
-  "productName": "Journee",
+  "productName": "Journee",  
   "version": "1.0.0",
   "repository": {
     "type": "git",
@@ -32,6 +32,10 @@
   },
   "build": {
     "synopsis": "A daily journal app",
+    "nsis": {
+    "artifactName": "${productName}-${version}-setup.${ext}",
+    "deleteAppDataOnUninstall": true
+    },
     "asar": false,
     "forceCodeSigning": true,
     "taget": "deb"

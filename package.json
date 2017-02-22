@@ -30,6 +30,7 @@
     "start": "electron ./app --enable-logging",
     "dev": "NODE_ENV='development' npm run start",
     "dist": "build --win"
+    "distl": "build -l"
   },
   "build": {
     "synopsis": "A daily journal app",

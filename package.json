@@ -1,7 +1,7 @@
 {
   "name": "Journee",
   "productName": "Journee",  
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adueck/journee"
@@ -37,7 +37,6 @@
     "deleteAppDataOnUninstall": true
     },
     "asar": false,
-    "forceCodeSigning": true,
-    "taget": "deb"
+    "forceCodeSigning": true
   }
 }

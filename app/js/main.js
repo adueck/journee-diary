@@ -83,9 +83,9 @@ storage.has('journalPath', function(error, hasKey) {
 			calendarYear = todayRaw.getFullYear();
 			calendarMonth = todayRaw.getMonthFormatted();
 
-			fs.readFile(journalDirectory + currentFileOpen, (err, fd) => {
+			fs.readFile(path.join(journalDirectory, currentFileOpen), (err, fd) => {
 			  if (err) {
-			    ;
+					;
 			  }
 			  else {
 			    document.getElementById("textArea").value = fd;

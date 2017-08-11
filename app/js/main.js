@@ -2,8 +2,7 @@ var calendarData = [];
 var activeBadge = "";
 var calendarMonth;
 var calendarYear;
-
-//TODO: research this: https://shapeshed.com/writing-cross-platform-node/
+require('bootstrap-add-clear');
 
 //TODO: check to see if chosen folder exists when opening
 
@@ -28,7 +27,6 @@ Date.prototype.getDateFormatted = function() {
 }
 
 // set fontsize to start
-
 storage.has('fontSizePreference', function(error, hasKey) {
   if (error) throw error;
   if (hasKey) {
@@ -102,6 +100,8 @@ storage.has('journalPath', function(error, hasKey) {
 	}
 });
 
+// TODO: make entryList global so that the search function doesn't have to spend time getting it again?
+
 function refreshCalendar() {
   calendarData = [];
   var entryList = getEntryList();
@@ -169,6 +169,31 @@ function giveMeDate(id) {
     putCurrentBadgeOn();
 }
 
+function fromSearchDate(arg) {
+    var date = arg;
+    var previousFileOpen = currentFileOpen;
+		alert("You were on " + previousFileOpen);
+    currentFileOpen = date + '.txt';
+		alert("And now the current file is " + currentFileOpen)
+    if (document.getElementById("textArea").value !== "") {
+      saveEntry(previousFileOpen, document.getElementById("textArea").value);
+			alert("saving " + previousFileOpen);
+    }
+		// TODO: do something more efficient than trying to delete a file on every change.
+    else if (document.getElementById("textArea").value == "" && previousFileOpen !== currentFileOpen)  {
+      deleteEntry(previousFileOpen);
+    }
+		if (previousFileOpen !== currentFileOpen) {
+			document.getElementById("textArea").value = readEntry(currentFileOpen);
+    	restingStatusText();
+	  }
+		// TODO: This is an unnecessaril inneficient workaround because the putCurrentBadgeOn() function was throwing an error when called from here
+    refreshCalendar();
+		$('#searchModal').modal('hide')
+}
+
+
+
 function save() {
     if (document.getElementById("textArea").value !== "") {
       saveEntry(currentFileOpen, document.getElementById("textArea").value);
@@ -203,3 +228,8 @@ function myNavFunction(id) {
 		calendarYear = to.year;
 		calendarMonth = to.month;
 }
+
+// bootstrap-add-clear http://gesquive.github.io/bootstrap-add-clear/
+$(function(){
+  $("#searchArea").addClear();
+});

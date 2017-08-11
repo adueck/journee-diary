@@ -2,7 +2,7 @@
   "name": "Journee",
   "productName": "Journee",
   "description": "A Daily Journal App",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/adueck/journee"
@@ -18,8 +18,7 @@
   "main": "main.js",
   "dependencies": {
     "electron-json-storage": "^3.0.1",
-    "electron-window-state": "^4.0.2",
-    "glob": "^7.1.1"
+    "electron-window-state": "^4.0.2"
   },
   "devDependencies": {
     "electron": "^1.4.15",

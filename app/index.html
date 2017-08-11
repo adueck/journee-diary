@@ -1,28 +1,29 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.min.css">
-
-    </head>
-    <body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.min.css">
+  </head>
+  <body>
 
     <div class="container">
-      <!-- Example row of columns -->
-      <!-- todo: figure out best use of columns  md   lg etc -->
-      <!-- todo: center a 4 / 7 combo ?? -->
      <div class="row">
       <div class="col-md-4">
           <div id="my-calendar" style="margin-top: 20px; margin-bottom: 30px;"></div>
+          <div class="input-group">
+            <input type="text" id="searchArea" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" aria-hidden="true" onclick="searchJournal();"><span class="glyphicon glyphicon-search bottom-icon"></span></button>
+            </span>
+          </div>
       </div>
         <div class="col-md-7 full-height">
           <textarea class="form-control" id="textArea" autofocus dir="auto"></textarea>
@@ -37,25 +38,45 @@
 
 <!-- modals/popups -->
 
-<!-- TODO: what's the point of 'tabindex' -->
-
-<div class="modal fade" id="introModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" >
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog">
  <div class="modal-dialog" role="document">
   <div class="modal-content">
    <div class="modal-header">
-    <h4 class="modal-title">Welcome to Journee!</h4>
-     </div>
-      <div class="modal-body">
-        <p>To get started, choose a directory that you'd like to keep your journal.</p>
-        <p>Your journal will actually be a folder full of files, named <code>YYYY-MM-DD.txt</code> for each day you write. That way you'll have a folder full of memories that can easily be accessed or read, even if you delete or stop using this program.</p>
-        <p>It's best if you make a new/empty folder, and keep it in a place you won't forget about it.</p>
-        <p><em>TIP: Make a <code>journal</code> folder in your Dropbox and keep your files there for easy backup.</em></p>
-        <!-- warning for non-empty directory -->
-        <div id="nonEmptyAlertSpaceStart"></div>
-      </div>
-     <div class="modal-footer">
-    <button type="button" class="btn btn-primary" onclick="initialChooseDirectory()">Choose Journal Directory</button>
+    <h4 class="modal-title">Search Results</h4>
    </div>
+  <div class="modal-body" id="searchResultsBody">
+        <div class="list-group" id="searchResultsDisplay"></ul></div>
+  </div>
+     <div class="modal-footer">
+     </div>
+  </div><!-- /.modal-content -->
+ </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
+ <div class="modal-dialog" role="document">
+  <div class="modal-content">
+   <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">Help</h4>a
+   </div>
+      <div class="modal-body">
+        <p><strong>To save an entry</strong> press <code>CTRL/CMD</code> + <code>S</code>.</p>
+        <p>Your entries will also be automatically saved when you open an entry for a different day or you close the program.</p>
+        <p><strong>To delete an entry</strong> erase everything in the text field and then save.</p>
+        <p>A <strong>search function</strong> will be coming in a later release. In the mean time you can easily search through your plain-text journal files using another program.</p>
+        <p>Your journal is located in:</p>
+        <ul class="list-group">
+          <li class="list-group-item" id="journal-directory2"></li>
+        </ul>
+        <p>To change the journal directory go to <em>Settings</em>   <span class="glyphicon glyphicon-cog bottom-icon" aria-hidden="true" data-dismiss="modal" onclick="$('#settingsModal').modal('show');"></span>
+     </div>
+     <div class="modal-footer">
+       <span style="font-style: italic; float: left;">Version 1.0.1 - <a href="https://www.adamdueck.com/journee/">check for update</a></span>
+       <!-- todo: make this proper path -->
+       <!-- todo: make this open in browser -->
+       <button type="button" class="btn btn-primary" data-dismiss="modal">Exit</button>
+     </div>
   </div><!-- /.modal-content -->
  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -107,41 +128,33 @@
  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="modal fade" id="helpModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="introModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" >
  <div class="modal-dialog" role="document">
   <div class="modal-content">
    <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title">Help</h4>
+    <h4 class="modal-title">Welcome to Journee!</h4>
      </div>
       <div class="modal-body">
-        <p><strong>To save an entry</strong> press <code>CTRL/CMD</code> + <code>S</code>.</p>
-        <p>Your entries will also be automatically saved when you open an entry for a different day or you close the program.</p>
-        <p><strong>To delete an entry</strong> erase everything in the text field and then save.</p>
-        <p>A <strong>search function</strong> will be coming in a later release. In the mean time you can easily search through your plain-text journal files using another program.</p>
-        <p>Your journal is located in:</p>
-        <ul class="list-group">
-          <li class="list-group-item" id="journal-directory2"></li>
-        </ul>
-        <p>To change the journal directory go to <em>Settings</em>   <span class="glyphicon glyphicon-cog bottom-icon" aria-hidden="true" data-dismiss="modal" onclick="$('#settingsModal').modal('show');"></span>
+        <p>To get started, choose a directory that you'd like to keep your journal.</p>
+        <p>Your journal will actually be a folder full of files, named <code>YYYY-MM-DD.txt</code> for each day you write. That way you'll have a folder full of memories that can easily be accessed or read, even if you delete or stop using this program.</p>
+        <p>It's best if you make a new/empty folder, and keep it in a place you won't forget about it.</p>
+        <p><em>TIP: Make a <code>journal</code> folder in your Dropbox and keep your files there for easy backup.</em></p>
+        <!-- warning for non-empty directory -->
+        <div id="nonEmptyAlertSpaceStart"></div>
+      </div>
      <div class="modal-footer">
-       <span style="font-style: italic; float: left;">Version 1.0.1 - <a href="https://www.adamdueck.com/journee/">check for update</a></span>
-       <!-- todo: make this proper path -->
-       <!-- todo: make this open in browser -->
-       <button type="button" class="btn btn-primary" data-dismiss="modal">Exit</button>
+    <button type="button" class="btn btn-primary" onclick="initialChooseDirectory()">Choose Journal Directory</button>
    </div>
   </div><!-- /.modal-content -->
  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-        <script>
-          window.$ = window.jQuery = require('./js/vendor/jquery-1.11.2.min.js');
-        </script>
-        <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/file-interface.js"></script>
-        <script src="js/key-shortcuts.js"></script>
-        <script src="js/zabuto_calendar.min.js"></script>
-        <script src="js/main.js"></script>
-
-    </body>
+    <script>
+      window.$ = window.jQuery = require('./js/vendor/jquery-1.11.2.min.js');
+    </script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/file-interface.js"></script>
+    <script src="js/key-shortcuts.js"></script>
+    <script src="js/zabuto_calendar.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

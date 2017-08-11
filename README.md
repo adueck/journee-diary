@@ -1,6 +1,6 @@
 ![Journee Logo](journeelogo.png)
 
-# journee (beta)
+# journee 
 
 A lightweight, simplified RedNotebook-type journal/diary app. Built with Electron. Makes a folder full of dated text files.
 
@@ -31,7 +31,7 @@ npm install
 electron .
 ```
 
-### Journee works great... but it's just getting started. (This is beta!)
+### Journee works great... but it's just getting started. 
 
 #### Things still coming:
 

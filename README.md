@@ -35,8 +35,8 @@ electron .
 
 #### Things still coming:
 
-- Search function
 - Audio notes
+- File Attachments
 
 #### Contributions are welcome!
 

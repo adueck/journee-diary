@@ -206,3 +206,8 @@ function searchJournal() {
     }
   }
 }
+
+function updateCheck() {
+  require('electron').shell.openExternal('http://www.adamdueck.com/journee/');
+}
+

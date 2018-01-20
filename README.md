@@ -6,7 +6,14 @@ A lightweight, simplified RedNotebook-type journal/diary app. Built with Electro
 
 ![Screenshot](journee-screenshot.png)
 
+
 ### Installing and Running
+
+#### Windows Installer Binary
+
+[Download Here](https://s3.amazonaws.com/journee-app/Journee-1.1.1-setup.exe)
+
+#### Run From Source with Electron
 
 Make sure you have electron installed globally
 ```

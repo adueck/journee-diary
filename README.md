@@ -18,7 +18,6 @@ A lightweight, simplified RedNotebook-type journal/diary app. Built with Electro
 Make sure you have electron installed globally
 ```
 npm install -g electron
-
 ```
 
 Clone the repository

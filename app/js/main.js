@@ -8,13 +8,7 @@ require('bootstrap-add-clear');
 
 //TODO: only save files on file change if the file has been modified. (Make a variable for file has been modified on first keystroke?)
 
-//TODO: Help with Keyboard Shortcuts
-
 //TODO: Add help icon '?' beside the settings cog, explaining shortcuts etc. (And autosave)
-
-//TODO: better practice re this: http://stackoverflow.com/questions/3910736/how-to-call-multiple-javascript-functions-in-onclick-event
-
-//TODO: better practice re querySelectorALl() https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll instead of directory1 and directory2 seperate calling - overspecific ID??iii
 
 // solution to get properly formatted dates thanks to @Serhioromano. https://gist.github.com/Serhioromano/5170203
 Date.prototype.getMonthFormatted = function() {
@@ -172,12 +166,9 @@ function giveMeDate(id) {
 function fromSearchDate(arg) {
     var date = arg;
     var previousFileOpen = currentFileOpen;
-		alert("You were on " + previousFileOpen);
     currentFileOpen = date + '.txt';
-		alert("And now the current file is " + currentFileOpen)
     if (document.getElementById("textArea").value !== "") {
       saveEntry(previousFileOpen, document.getElementById("textArea").value);
-			alert("saving " + previousFileOpen);
     }
 		// TODO: do something more efficient than trying to delete a file on every change.
     else if (document.getElementById("textArea").value == "" && previousFileOpen !== currentFileOpen)  {

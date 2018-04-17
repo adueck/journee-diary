@@ -33,11 +33,12 @@
   },
   "build": {
     "synopsis": "A daily journal app",
+    "appId": "com.adueck.journee",
     "nsis": {
     "artifactName": "${productName}-${version}-setup.${ext}",
     "deleteAppDataOnUninstall": true
     },
-    "asar": false,
-    "forceCodeSigning": true
+    "asar": true,
+    "forceCodeSigning": false
   }
 }

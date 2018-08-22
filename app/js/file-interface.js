@@ -208,6 +208,6 @@ function searchJournal() {
 }
 
 function updateCheck() {
-  require('electron').shell.openExternal('http://www.adamdueck.com/journee/');
+  require('electron').shell.openExternal('https://adueck.github.io/journee/');
 }
 
